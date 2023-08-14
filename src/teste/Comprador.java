@@ -25,7 +25,16 @@ public class Comprador {
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
+		
+		
 	}
+
+	@Override
+	public String toString() {
+		return "Comprador [id=" + id + ", nome=" + nome + ", cpf=" + cpf + "]";
+	}
+
+
 
 	public int getId() {
 		return id;

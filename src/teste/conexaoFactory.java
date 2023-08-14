@@ -2,6 +2,7 @@ package teste;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -20,10 +21,10 @@ public class conexaoFactory {
 		}
 		return null;
 	}
-	
+
 	public static void close(Connection connection) {
 		try {
-			if(connection != null)
+			if (connection != null)
 				connection.close();
 			connection.close();
 		} catch (SQLException e) {
@@ -31,18 +32,29 @@ public class conexaoFactory {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void close(Connection connection, Statement stmt){
+
+	public static void close(Connection connection, Statement stmt) {
 		close(connection);
 		try {
-			if(stmt != null)
+			if (stmt != null)
 				stmt.close();
-			stmt.close();
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-		
+
+	}
+
+	public static void close(Connection connection, Statement stmt, ResultSet rs) {
+		close(connection, stmt);
+		try {
+			if (rs != null)
+				rs.close();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
 	}
 
 }
